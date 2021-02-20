@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+  
+<mapper namespace='PartidosMap'>
+	
+	<select id="insertarPartidosXml" parameterMap="insertarPartidosXmlMap" statementType="CALLABLE" >
+		call pk_partidos_apuestas.obtener_todos_partidos(?)
+	</select>
+	
+	<parameterMap id="insertarPartidosXmlMap" type="partidosXmlBean">
+		<parameter property="partidosXml"  			jdbcType="CLOB" 	mode="IN"	/>
+	</parameterMap>	
+
+</mapper>
