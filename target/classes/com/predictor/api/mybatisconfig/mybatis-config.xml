@@ -3,11 +3,11 @@
   PUBLIC '-//mybatis.org//DTD Config 3.0//EN'
   'http://mybatis.org/dtd/mybatis-3-config.dtd'>
 <configuration>
-	<properties resource='com/predictor/api/resources/jdbc.properties'/>
+	<properties resource='jdbc.properties'/>
 	<typeAliases>
-		<typeAlias type='com.predictor.api.beans.PartidosXmlBean' 	alias='partidosXmlBean'></typeAlias>
-		<typeAlias type='com.listapartidos.soccerstats.beans.PartidosXmlOutBean' 	alias='partidosXmlOutBean'></typeAlias>
-		<typeAlias type='com.listapartidos.soccerstats.beans.DatosPartidoBean' 		alias='DatosPartidoBean'></typeAlias>
+		<typeAlias type='com.predictor.api.beans.PartidosXmlBean' 		alias='partidosXmlBean'></typeAlias>
+		<typeAlias type='com.predictor.api.beans.PartidosXmlOutBean' 	alias='partidosXmlOutBean'></typeAlias>
+		<typeAlias type='com.predictor.api.beans.DatosPartidoBean' 		alias='DatosPartidoBean'></typeAlias>
 	</typeAliases>
 	<environments default='development'>
 		<environment id='development'>

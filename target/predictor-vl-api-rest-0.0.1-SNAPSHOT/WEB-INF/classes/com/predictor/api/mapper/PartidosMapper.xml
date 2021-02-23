@@ -5,11 +5,47 @@
 <mapper namespace='PartidosMap'>
 	
 	<select id="insertarPartidosXml" parameterMap="insertarPartidosXmlMap" statementType="CALLABLE" >
-		call pk_partidos_apuestas.obtener_todos_partidos(?)
+		call pk_partidos_apuestas.sp_obtener_todos_partidos(?)
 	</select>
 	
 	<parameterMap id="insertarPartidosXmlMap" type="partidosXmlBean">
 		<parameter property="partidosXml"  			jdbcType="CLOB" 	mode="IN"	/>
-	</parameterMap>	
+	</parameterMap>
+	
+	<select id="listaPartidosDepuradosXml" parameterMap="listaPartidosDepuradosXmlMap" statementType="CALLABLE" >
+		call pk_partidos_apuestas.sp_partidos_depurados(?,?)
+	</select>
+	
+	<parameterMap id="listaPartidosDepuradosXmlMap" type="partidosXmlOutBean">
+		<parameter property="partidosXml"  				jdbcType="CLOB" 	mode="IN"	/>
+		<parameter property="partidosDepurados"  		jdbcType="CURSOR" 	mode="OUT"		resultMap="partidosDepuradosMap"/>
+	</parameterMap>
+	
+	<resultMap id="partidosDepuradosMap" 			type="DatosPartidoBean">
+		<result property = "id" 		     			column = "ID"/>
+		<result property = "fecha" 		     			column = "FECHA"/>
+		<result property = "liga" 		     			column = "LIGA"/>
+		<result property = "local" 		     			column = "LOCAL"/>
+		<result property = "visitante" 		     		column = "VISITANTE"/>
+		<result property = "partidosTotalLocal" 		column = "PARTIDOS_TOTAL_LOCAL"/>
+		<result property = "partidosLocal" 				column = "PARTIDOS_LOCAL"/>
+		<result property = "partidosTotalVisitante" 	column = "PARTIDOS_TOTAL_VISITANTE"/>
+		<result property = "partidosVisitante" 			column = "PARTIDOS_VISITANTE"/>
+		<result property = "numeroPartidos" 			column = "NUMERO_PARTIDOS"/>
+		<result property = "pVictoriaLocal" 			column = "P_VICTORIA_LOCAL"/>
+		<result property = "pEmpate" 					column = "P_EMPATE"/>
+		<result property = "pVictoriaVisitante" 		column = "P_VICTORIA_VISITANTE"/>
+		<result property = "dCS" 						column = "DCS"/>
+		<result property = "dCSTotal" 					column = "DCS_TOTAL"/>
+		<result property = "dFTS" 						column = "DFTS"/>
+		<result property = "dFTSTotal" 					column = "DFTS_TOTAL"/>
+		<result property = "dpGanados" 					column = "DP_GANADOS"/>
+		<result property = "dpGanadosTotal" 			column = "DP_GANADOS_TOTAL"/>
+		<result property = "dpEmpatados" 				column = "DP_EMPATADOS"/>
+		<result property = "dpEmpatadosTotal" 			column = "DP_EMPATADOS_TOTAL"/>
+		<result property = "dpPerdidos" 				column = "DP_PERDIDOS"/>
+		<result property = "dpPerdidosTotal" 			column = "DP_PERDIDOS_TOTAL"/>
+		<result property = "potencialCuota" 			column = "POTENCIAL_CUOTA"/>
+	</resultMap>
 
 </mapper>
